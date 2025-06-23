@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Terbaru - Nonton Gratis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* === PERUBAHAN ADA DI SINI === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* JURUS PAMUNGKAS ANTI GESER KANAN-KIRI */
+        }
+        /* ============================ */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #f07b05;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #8c8c8c;
+            margin-bottom: 40px;
+        }
+        .search-container {
+            margin-bottom: 30px;
+        }
+        #search-input {
+            width: 100%;
+            padding: 15px 20px;
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #search-input:focus {
+            border-color: #f07b05;
+        }
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .category-tabs button {
+            background-color: #1a1a1a;
+            color: #fff;
+            border: 2px solid #1a1a1a;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .category-tabs button:hover {
+            border-color: #f07b05;
+        }
+        .category-tabs button.active {
+            background-color: #f07b05;
+            color: #0d0d0d;
+            border-color: #f07b05;
+        }
+        .movie-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: none;
+        }
+        .movie-list.active {
+            display: block;
+        }
+        .movie-list li {
+            background-color: #1a1a1a;
+            margin-bottom: 12px;
+            border-radius: 8px;
+        }
+        .movie-list a {
+            display: block;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .movie-list a:hover {
+            background-color: #f07b05;
+            color: #0d0d0d;
+        }
+        #no-results-message {
+            color: #8c8c8c;
+            font-size: 1.2rem;
+            padding: 20px;
+            display: none;
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            .category-tabs button { font-size: 0.9rem; padding: 8px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Film Terbaru</h1>
+        <p>Pilih film yang ingin kamu tonton dari daftar di bawah ini.</p>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Cari judul film...">
+        </div>
+
+        <div class="category-tabs">
+            <button class="active" data-category="movie">Movie</button>
+            <button data-category="anime">Anime</button>
+            <button data-category="indonesia">Indonesia</button>
+        </div>
+        
+        <ul class="movie-list active" data-list="movie">
+            <li><a href="absolute-dominion-2023.html">Absolute Dominion (2023)</a></li>
+            <li><a href="ballerina-2025.html">Ballerina (2025)</a></li>
+            <li><a href="john-wick-2025.html">John Wick Chapter 5 (2025)</a></li>
+        </ul>
+        <ul class="movie-list" data-list="anime">
+            <li><a href="jujutsu-kaisen-0.html">Jujutsu Kaisen 0: The Movie (2021)</a></li>
+            <li><a href="suzume.html">Suzume (2022)</a></li>
+        </ul>
+        <ul class="movie-list" data-list="indonesia">
+            <li><a href="pengabdi-setan-2.html">Pengabdi Setan 2: Communion (2022)</a></li>
+            <li><a href="sewu-dino.html">Sewu Dino (2023)</a></li>
+        </ul>
+        
+        <p id="no-results-message">Film tidak ditemukan.</p>
+    </div>
+
+    <!-- Kode JavaScript tidak berubah, jadi tetap sama -->
+    <script>
+        const categoryTabs = document.querySelectorAll('.category-tabs button');
+        const movieLists = document.querySelectorAll('.movie-list');
+        const searchInput = document.getElementById('search-input');
+        const noResultsMessage = document.getElementById('no-results-message');
+
+        function sortList(list) {
+            const items = Array.from(list.querySelectorAll('li'));
+            items.sort((a, b) => a.textContent.localeCompare(b.textContent));
+            items.forEach(item => list.appendChild(item));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            movieLists.forEach(list => sortList(list));
+        });
+
+        function filterMovies() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeList = document.querySelector('.movie-list.active');
+            if (!activeList) return;
+            const listItems = activeList.querySelectorAll('li');
+            let resultsFound = false;
+            listItems.forEach(item => {
+                const title = item.textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    resultsFound = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            noResultsMessage.style.display = resultsFound ? 'none' : 'block';
+        }
+
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetCategory = tab.dataset.category;
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                movieLists.forEach(list => {
+                    list.querySelectorAll('li').forEach(item => item.style.display = 'block');
+                    list.classList.remove('active');
+                });
+                const targetList = document.querySelector(`.movie-list[data-list="${targetCategory}"]`);
+                if (targetList) {
+                    targetList.classList.add('active');
+                }
+                searchInput.value = '';
+                noResultsMessage.style.display = 'none';
+            });
+        });
+
+        searchInput.addEventListener('input', filterMovies);
+    </script>
+</body>
+</html>
