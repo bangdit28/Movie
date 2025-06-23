@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Judul halaman akan diubah oleh JavaScript -->
-    <title>Nonton 28 Years Later (2025) Sub Indo</title>
+    <title>Nonton John Wick (2014) Sub Indo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--dark-color); color: var(--white-color); overflow-x: hidden; }
         .hero { min-height: 100vh; width: 100%; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(to top, rgba(13, 13, 13, 1) 20%, rgba(13, 13, 13, 0.5) 100%), url('https://image.tmdb.org/t/p/original/zav0v7gLWMu6pVwgsIAwt11GJ4C.jpg'); background-size: cover; background-position: center top; filter: blur(5px); z-index: -1; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(to top, rgba(13, 13, 13, 1) 20%, rgba(13, 13, 13, 0.5) 100%), url('https://image.tmdb.org/t/p/original/cQ2U1altwmnRgIHD8cPhMpDmXIg.jpg'); background-size: cover; background-position: center top; filter: blur(5px); z-index: -1; }
         .main-poster { position: relative; width: 280px; margin-bottom: 25px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
         .main-poster img { width: 100%; display: block; border-radius: 8px; }
         .hero-content h1 { font-family: 'Teko', sans-serif; font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 10px; line-height: 1.1; }
@@ -43,14 +43,14 @@
 <body>
     <main class="hero">
         <div class="main-poster">
-            <img src="https://image.tmdb.org/t/p/w500/n5FygjEppOvac6yEaowi26nTyw3.jpg" alt="Poster Absolute Dominion">
-            <div class="rating-badge">⭐ 4.8</div>
-            <div class="quality-badge">HD</div>
+            <img src="https://image.tmdb.org/t/p/w500/d7YxLE6ohg7TnDLYr6DEvyAxnC8" alt="Poster Absolute Dominion">
+            <div class="rating-badge">⭐ 7.4</div>
+            <div class="quality-badge">BLURAY</div>
         </div>
         <div class="hero-content">
             <!-- Teks di bawah ini akan diubah oleh JavaScript -->
-            <h1 data-translate="movieTitle">28 Years Later (2025)</h1>
-            <p data-translate="synopsis">Sekelompok penyintas virus kemarahan tinggal di sebuah pulau kecil. Ketika salah satu dari kelompok itu meninggalkan pulau itu untuk menjalankan misi ke daratan, ia menemukan rahasia, keajaiban, dan kengerian yang telah mengubah tidak hanya yang terinfeksi tetapi juga para penyintas lainnya.</p>
+            <h1 data-translate="movieTitle">John Wick (2014)</h1>
+            <p data-translate="synopsis">Saat mobilnya dicuri dan anjingnya dibunuh oleh putra seorang gangster, John Wick si mantan pembunuh yang pemberani menghadapi seluruh kawanan mafia demi membalas dendam.</p>
             <button class="play-button" id="play-movie-btn" data-translate="watchButton"><i class="fas fa-play"></i> NONTON SEKARANG</button>
         </div>
     </main>
@@ -68,8 +68,8 @@
         <span class="close-player-btn" id="close-player-btn">×</span>
         <div class="video-player-wrapper">
              <div class="loading-spinner" id="spinner"></div>
-             <div class="rating-badge">⭐ 4.8</div>
-             <div class="quality-badge">HD</div>
+             <div class="rating-badge">⭐ 7.4</div>
+             <div class="quality-badge">BLURAY</div>
              <iframe id="movie-iframe" src="" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
@@ -80,8 +80,8 @@
         // Kalau mau edit teks, editnya di sini
         const translations = {
             'id': {
-                pageTitle: 'Nonton 28 Years Later (2025) Sub Indo',
-                movieTitle: '28 YEARS LATER',
+                pageTitle: 'Nonton John Wick (2014) Sub Indo',
+                movieTitle: 'John Wick',
                 synopsis: 'Sekelompok penyintas virus kemarahan tinggal di sebuah pulau kecil. Ketika salah satu dari kelompok itu meninggalkan pulau itu untuk menjalankan misi ke daratan, ia menemukan rahasia, keajaiban, dan kengerian yang telah mengubah tidak hanya yang terinfeksi tetapi juga para penyintas lainnya.',
                 watchButton: '<i class="fas fa-play"></i> NONTON SEKARANG',
                 lockTitle: 'AKSES TERKUNCI',
@@ -89,9 +89,9 @@
                 unlockButton: 'BUKA & LANJUTKAN NONTON'
             },
             'en': {
-                pageTitle: 'Watch 28 Years Later (2025) Eng Indo',
-                movieTitle: '28 YEARS LATER',
-                synopsis: 'A group of survivors of the rage virus live on a small island. When one of the group leaves the island on a mission to the mainland, he discovers secrets, wonders, and horrors that have changed not only the infected but also the other survivors.',
+                pageTitle: 'Watch John Wick (2014) Sub Indo',
+                movieTitle: 'John Wick',
+                synopsis: 'Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.',
                 watchButton: '<i class="fas fa-play"></i> WATCH NOW',
                 lockTitle: 'ACCESS LOCKED',
                 lockDescription: 'To unlock the video player, click the button below to support us. A sponsor page will open in a new tab.',
@@ -109,7 +109,7 @@
         const spinner = document.getElementById('spinner');
         
         const adsterraDirectLink = 'https://www.google.com';
-        const movieUrl = 'https://short.icu/BLEHweYK-';
+        const movieUrl = 'https://short.icu/rBLF4BHRt';
         
         playMovieBtn.addEventListener('click', () => adLockOverlay.classList.add('active'));
         unlockBtn.addEventListener('click', () => {
