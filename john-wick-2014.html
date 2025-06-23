@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Judul halaman akan diubah oleh JavaScript -->
     <title>Nonton John Wick (2014) Sub Indo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,26 +13,24 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--dark-color); color: var(--white-color); overflow-x: hidden; }
         .hero { min-height: 100vh; width: 100%; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(to top, rgba(13, 13, 13, 1) 20%, rgba(13, 13, 13, 0.5) 100%), url('https://image.tmdb.org/t/p/original/cQ2U1altwmnRgIHD8cPhMpDmXIg.jpg'); background-size: cover; background-position: center top; filter: blur(5px); z-index: -1; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(to top, rgba(13, 13, 13, 1) 20%, rgba(13, 13, 13, 0.5) 100%), url('https://image.tmdb.org/t/p/original/xPPizf0YCCYB82AmjubPbqUhZKW.jpg'); background-size: cover; background-position: center top; filter: blur(5px); z-index: -1; }
         .main-poster { position: relative; width: 280px; margin-bottom: 25px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
         .main-poster img { width: 100%; display: block; border-radius: 8px; }
         .hero-content h1 { font-family: 'Teko', sans-serif; font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 10px; line-height: 1.1; }
         .hero-content p { font-size: 1rem; max-width: 600px; margin: 0 auto 30px auto; color: var(--gray-color); line-height: 1.6; }
         .play-button { background-color: var(--primary-color); color: var(--dark-color); border: none; padding: 15px 40px; font-size: 1.3rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.3s; display: inline-flex; align-items: center; gap: 10px; animation: pulse 2s infinite; }
-        .play-button:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(240, 123, 5, 0.7); }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(240, 123, 5, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(240, 123, 5, 0); } 100% { box-shadow: 0 0 0 0 rgba(240, 123, 5, 0); } }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); display: none; justify-content: center; align-items: center; z-index: 200; }
         .overlay.active { display: flex; }
         .ad-lock-box { background-color: var(--light-dark-color); padding: 40px; border-radius: 10px; text-align: center; border: 1px solid var(--primary-color); max-width: 450px; margin: 20px; }
-        .ad-lock-box .icon { font-size: 4rem; color: var(--primary-color); margin-bottom: 20px; }
-        .ad-lock-box h2 { font-family: 'Teko', sans-serif; font-size: 2.5rem; margin-bottom: 10px; }
-        .ad-lock-box p { margin-bottom: 30px; color: var(--gray-color); line-height: 1.6; }
         #unlock-btn { background-color: var(--primary-color); color: var(--dark-color); width: 100%; padding: 15px; border: none; border-radius: 5px; font-size: 1.2rem; font-weight: 700; cursor: pointer; }
-        .video-player-wrapper { position: relative; width: 85%; max-width: 1200px; aspect-ratio: 16 / 9; background-color: var(--dark-color); background-image: url('https://image.tmdb.org/t/p/w780/zav0v7gLWMu6pVwgsIAwt11GJ4C.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center; }
-        #movie-iframe { width: 100%; height: 100%; border: none; background-color: transparent; position: relative; z-index: 2; }
-        .quality-badge, .rating-badge { position: absolute; padding: 5px 10px; font-size: 0.9rem; font-weight: 700; border-radius: 5px; color: var(--white-color); z-index: 1; }
-        .quality-badge { top: 10px; right: 10px; background-color: #00a82d; }
-        .rating-badge { top: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.7); color: #ffc107; }
+        .video-player-wrapper { position: relative; width: 85%; max-width: 1200px; aspect-ratio: 16 / 9; background-color: #000; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        #movie-iframe { width: 100%; height: 100%; border: none; }
+        .rating-badge { position: absolute; top: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.7); color: #ffc107; padding: 5px 10px; font-size: 0.9rem; font-weight: 700; border-radius: 5px; z-index: 1; }
+        .quality-badge { position: absolute; top: 10px; right: 10px; padding: 5px 10px; font-size: 0.9rem; font-weight: 700; border-radius: 5px; color: var(--white-color); z-index: 1; text-transform: uppercase; }
+        .quality-badge.quality-cam { background-color: #dc3545; }
+        .quality-badge.quality-sd { background-color: #0dcaf0; }
+        .quality-badge.quality-hd, .quality-badge.quality-bluray { background-color: #198754; }
         .loading-spinner { display: none; width: 60px; height: 60px; border: 5px solid rgba(255, 255, 255, 0.3); border-top-color: var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; position: absolute; z-index: 3; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .close-player-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: var(--white-color); cursor: pointer; transition: transform 0.2s, color 0.2s; z-index: 210; }
@@ -43,24 +40,24 @@
 <body>
     <main class="hero">
         <div class="main-poster">
-            <img src="https://image.tmdb.org/t/p/original/wXqWR7dHncNRbxoEGybEy7QTe9h.jpg" alt="Poster Absolute Dominion">
+            <img src="https://image.tmdb.org/t/p/original/xPPizf0YCCYB82AmjubPbqUhZKW.jpg" alt="Poster John Wick">
             <div class="rating-badge">⭐ 7.4</div>
-            <div class="quality-badge">BLURAY</div>
+            <!-- INI BAGIAN PENTING UNTUK DIGANTI -->
+            <div class="quality-badge" data-quality="hd">HD</div>
         </div>
         <div class="hero-content">
-            <!-- Teks di bawah ini akan diubah oleh JavaScript -->
-            <h1 data-translate="movieTitle">John Wick (2014)</h1>
-            <p data-translate="synopsis">Saat mobilnya dicuri dan anjingnya dibunuh oleh putra seorang gangster, John Wick si mantan pembunuh yang pemberani menghadapi seluruh kawanan mafia demi membalas dendam.</p>
-            <button class="play-button" id="play-movie-btn" data-translate="watchButton"><i class="fas fa-play"></i> NONTON SEKARANG</button>
+            <!-- Teks sekarang langsung ditulis di sini, tidak ada lagi data-translate -->
+            <h1>John Wick (2014)</h1>
+            <p>Saat mobilnya dicuri dan anjingnya dibunuh oleh putra seorang gangster, John Wick si mantan pembunuh yang pemberani menghadapi seluruh kawanan mafia demi membalas dendam.</p>
+            <button class="play-button" id="play-movie-btn"><i class="fas fa-play"></i> NONTON SEKARANG</button>
         </div>
     </main>
 
     <div class="overlay" id="ad-lock-overlay">
         <div class="ad-lock-box">
-            <i class="fas fa-lock icon"></i>
-            <h2 data-translate="lockTitle">AKSES TERKUNCI</h2>
-            <p data-translate="lockDescription">Untuk membuka pemutar video, klik tombol di bawah untuk mendukung kami. Halaman sponsor akan terbuka di tab baru.</p>
-            <button id="unlock-btn" data-translate="unlockButton">BUKA & LANJUTKAN NONTON</button>
+            <h2>AKSES TERKUNCI</h2>
+            <p>Untuk membuka pemutar video, klik tombol di bawah untuk mendukung kami. Halaman sponsor akan terbuka di tab baru.</p>
+            <button id="unlock-btn">BUKA & LANJUTKAN NONTON</button>
         </div>
     </div>
 
@@ -68,38 +65,11 @@
         <span class="close-player-btn" id="close-player-btn">×</span>
         <div class="video-player-wrapper">
              <div class="loading-spinner" id="spinner"></div>
-             <div class="rating-badge">⭐ 7.4</div>
-             <div class="quality-badge">BLURAY</div>
              <iframe id="movie-iframe" src="" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
-    <!-- SEMUA LOGIKA BARU ADA DI SINI -->
     <script>
-        // === KAMUS UNTUK SEMUA TEKS ===
-        // Kalau mau edit teks, editnya di sini
-        const translations = {
-            'id': {
-                pageTitle: 'Nonton John Wick (2014) Sub Indo',
-                movieTitle: 'John Wick',
-                synopsis: 'Saat mobilnya dicuri dan anjingnya dibunuh oleh putra seorang gangster, John Wick si mantan pembunuh yang pemberani menghadapi seluruh kawanan mafia demi membalas dendam.',
-                watchButton: '<i class="fas fa-play"></i> NONTON SEKARANG',
-                lockTitle: 'AKSES TERKUNCI',
-                lockDescription: 'Untuk membuka pemutar video, klik tombol di bawah untuk mendukung kami. Halaman sponsor akan terbuka di tab baru.',
-                unlockButton: 'BUKA & LANJUTKAN NONTON'
-            },
-            'en': {
-                pageTitle: 'Watch John Wick (2014) Sub Indo',
-                movieTitle: 'John Wick',
-                synopsis: 'Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.',
-                watchButton: '<i class="fas fa-play"></i> WATCH NOW',
-                lockTitle: 'ACCESS LOCKED',
-                lockDescription: 'To unlock the video player, click the button below to support us. A sponsor page will open in a new tab.',
-                unlockButton: 'UNLOCK & CONTINUE WATCHING'
-            }
-        };
-
-        // --- Logika Player (tidak berubah) ---
         const playMovieBtn = document.getElementById('play-movie-btn');
         const adLockOverlay = document.getElementById('ad-lock-overlay');
         const unlockBtn = document.getElementById('unlock-btn');
@@ -111,7 +81,10 @@
         const adsterraDirectLink = 'https://www.google.com';
         const movieUrl = 'https://short.icu/rBLF4BHRt';
         
-        playMovieBtn.addEventListener('click', () => adLockOverlay.classList.add('active'));
+        playMovieBtn.addEventListener('click', () => {
+            adLockOverlay.classList.add('active');
+        });
+
         unlockBtn.addEventListener('click', () => {
             adLockOverlay.classList.remove('active');
             window.open(adsterraDirectLink, '_blank');
@@ -119,28 +92,22 @@
             spinner.style.display = 'block';
             movieIframe.src = movieUrl;
         });
-        movieIframe.onload = () => spinner.style.display = 'none';
+
+        movieIframe.onload = () => {
+            spinner.style.display = 'none';
+        };
+
         closePlayerBtn.addEventListener('click', () => {
             videoContainer.classList.remove('active');
             movieIframe.src = '';
             spinner.style.display = 'none';
         });
 
-        // --- Logika Bahasa Otomatis ---
+        // Logika untuk mewarnai label kualitas
         document.addEventListener('DOMContentLoaded', () => {
-            const userLang = navigator.language || navigator.userLanguage; 
-            const langToSet = userLang.startsWith('id') ? 'id' : 'en';
-
-            // Ambil data terjemahan sesuai bahasa yang terdeteksi
-            const langData = translations[langToSet];
-
-            // Ganti semua teks di halaman
-            document.title = langData.pageTitle;
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (langData[key]) {
-                    el.innerHTML = langData[key];
-                }
+            document.querySelectorAll('.quality-badge').forEach(badge => {
+                const quality = badge.dataset.quality.toLowerCase();
+                badge.classList.add(`quality-${quality}`);
             });
         });
     </script>
