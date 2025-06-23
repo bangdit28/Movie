@@ -9,116 +9,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <style>
-        /* === PERUBAHAN ADA DI SINI === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box; /* JURUS PAMUNGKAS ANTI GESER KANAN-KIRI */
-        }
-        /* ============================ */
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0d0d0d;
-            color: #fff;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            width: 100%;
-            margin: 40px auto;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5rem;
-            color: #f07b05;
-            margin-bottom: 15px;
-        }
-        p {
-            font-size: 1.1rem;
-            color: #8c8c8c;
-            margin-bottom: 40px;
-        }
-        .search-container {
-            margin-bottom: 30px;
-        }
-        #search-input {
-            width: 100%;
-            padding: 15px 20px;
-            background-color: #1a1a1a;
-            border: 2px solid #333;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1.1rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        #search-input:focus {
-            border-color: #f07b05;
-        }
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        .category-tabs button {
-            background-color: #1a1a1a;
-            color: #fff;
-            border: 2px solid #1a1a1a;
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .category-tabs button:hover {
-            border-color: #f07b05;
-        }
-        .category-tabs button.active {
-            background-color: #f07b05;
-            color: #0d0d0d;
-            border-color: #f07b05;
-        }
-        .movie-list {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-            display: none;
-        }
-        .movie-list.active {
-            display: block;
-        }
-        .movie-list li {
-            background-color: #1a1a1a;
-            margin-bottom: 12px;
-            border-radius: 8px;
-        }
-        .movie-list a {
-            display: block;
-            padding: 18px 20px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .movie-list a:hover {
-            background-color: #f07b05;
-            color: #0d0d0d;
-        }
-        #no-results-message {
-            color: #8c8c8c;
-            font-size: 1.2rem;
-            padding: 20px;
-            display: none;
-        }
-        @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
-            p { font-size: 1rem; }
-            .category-tabs button { font-size: 0.9rem; padding: 8px 15px; }
-        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: #0d0d0d; color: #fff; margin: 0; padding: 20px; }
+        .container { max-width: 800px; width: 100%; margin: 40px auto; text-align: center; }
+        h1 { font-size: 2.5rem; color: #f07b05; margin-bottom: 15px; }
+        p { font-size: 1.1rem; color: #8c8c8c; margin-bottom: 40px; }
+        .search-container { margin-bottom: 30px; }
+        #search-input { width: 100%; padding: 15px 20px; background-color: #1a1a1a; border: 2px solid #333; border-radius: 8px; color: #fff; font-size: 1.1rem; outline: none; transition: border-color 0.3s; }
+        #search-input:focus { border-color: #f07b05; }
+        .category-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+        .category-tabs button { background-color: #1a1a1a; color: #fff; border: 2px solid #1a1a1a; padding: 10px 20px; font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+        .category-tabs button:hover { border-color: #f07b05; }
+        .category-tabs button.active { background-color: #f07b05; color: #0d0d0d; border-color: #f07b05; }
+        .movie-list { list-style: none; padding: 0; text-align: left; display: none; }
+        .movie-list.active { display: block; }
+        .movie-list li { background-color: #1a1a1a; margin-bottom: 12px; border-radius: 8px; }
+        .movie-list a { display: flex; align-items: center; padding: 18px 20px; text-decoration: none; color: #fff; gap: 12px; transition: background-color 0.3s; }
+        .movie-list a:hover { background-color: #2a2a2a; }
+        .movie-title { font-weight: 600; }
+        .quality-badge { padding: 4px 8px; font-size: 0.8rem; font-weight: 700; border-radius: 5px; color: #fff; text-transform: uppercase; }
+        .quality-badge.quality-cam { background-color: #dc3545; animation: glow-cam 2s infinite; }
+        .quality-badge.quality-sd { background-color: #0dcaf0; animation: glow-sd 2s infinite; }
+        .quality-badge.quality-hd, .quality-badge.quality-bluray { background-color: #198754; animation: glow-hd 2s infinite; }
+        @keyframes glow-cam { 0%, 100% { box-shadow: 0 0 5px rgba(220, 53, 69, 0.5); } 50% { box-shadow: 0 0 15px rgba(220, 53, 69, 1); } }
+        @keyframes glow-sd { 0%, 100% { box-shadow: 0 0 5px rgba(13, 202, 240, 0.5); } 50% { box-shadow: 0 0 15px rgba(13, 202, 240, 1); } }
+        @keyframes glow-hd { 0%, 100% { box-shadow: 0 0 5px rgba(25, 135, 84, 0.5); } 50% { box-shadow: 0 0 15px rgba(25, 135, 84, 1); } }
+        #no-results-message { color: #8c8c8c; font-size: 1.2rem; padding: 20px; display: none; }
+        @media (max-width: 480px) { h1 { font-size: 2rem; } p { font-size: 1rem; } .category-tabs button { font-size: 0.9rem; padding: 8px 15px; } }
     </style>
 </head>
 <body>
@@ -137,23 +54,23 @@
         </div>
         
         <ul class="movie-list active" data-list="movie">
-            <li><a href="john-wick-2014.html">John Wick (2014)</a></li>
-            <li><a href="john-wick-chapter-3-parabellum-2019.html">John Wick: Chapter 3 - Parabellum (2019)</a></li>
-            <li><a href="john-wick-2025.html">John Wick Chapter 5 (2025)</a></li>
+            <li data-quality="hd"><a href="john-wick-2014.html"><span class="movie-title">John Wick (2014)</span><span class="quality-badge">HD</span></a></li>
+            <li data-quality="bluray"><a href="john-wick-chapter-3-parabellum-2019.html"><span class="movie-title">John Wick: Chapter 3 - Parabellum (2019)</span><span class="quality-badge">BLURAY</span></a></li>
+            <li data-quality="cam"><a href="john-wick-2025.html"><span class="movie-title">John Wick Chapter 5 (2025)</span><span class="quality-badge">CAM</span></a></li>
         </ul>
         <ul class="movie-list" data-list="anime">
-            <li><a href="jujutsu-kaisen-0.html">Jujutsu Kaisen 0: The Movie (2021)</a></li>
-            <li><a href="suzume.html">Suzume (2022)</a></li>
+            <li data-quality="hd"><a href="jujutsu-kaisen-0.html"><span class="movie-title">Jujutsu Kaisen 0: The Movie (2021)</span><span class="quality-badge">HD</span></a></li>
+            <li data-quality="hd"><a href="suzume.html"><span class="movie-title">Suzume (2022)</span><span class="quality-badge">HD</span></a></li>
         </ul>
         <ul class="movie-list" data-list="indonesia">
-            <li><a href="pengabdi-setan-2.html">Pengabdi Setan 2: Communion (2022)</a></li>
-            <li><a href="sewu-dino.html">Sewu Dino (2023)</a></li>
+            <li data-quality="hd"><a href="pengabdi-setan-2.html"><span class="movie-title">Pengabdi Setan 2: Communion (2022)</span><span class="quality-badge">HD</span></a></li>
+            <li data-quality="sd"><a href="sewu-dino.html"><span class="movie-title">Sewu Dino (2023)</span><span class="quality-badge">SD</span></a></li>
         </ul>
         
         <p id="no-results-message">Film tidak ditemukan.</p>
     </div>
 
-    <!-- Kode JavaScript tidak berubah, jadi tetap sama -->
+    <!-- SCRIPT YANG SUDAH DIPERBAIKI -->
     <script>
         const categoryTabs = document.querySelectorAll('.category-tabs button');
         const movieLists = document.querySelectorAll('.movie-list');
@@ -162,14 +79,38 @@
 
         function sortList(list) {
             const items = Array.from(list.querySelectorAll('li'));
-            items.sort((a, b) => a.textContent.localeCompare(b.textContent));
+            items.sort((a, b) => {
+                const titleA = a.querySelector('.movie-title').textContent;
+                const titleB = b.querySelector('.movie-title').textContent;
+                return titleA.localeCompare(titleB);
+            });
             items.forEach(item => list.appendChild(item));
         }
+        
+        // --- INI FUNGSI YANG KEMARIN KETINGGALAN ---
+        function applyQualityClasses() {
+            document.querySelectorAll('.movie-list li').forEach(item => {
+                const quality = item.dataset.quality; 
+                if (quality) {
+                    const badge = item.querySelector('.quality-badge');
+                    if (badge) {
+                        // Hapus kelas lama dulu untuk jaga-jaga
+                        badge.classList.remove('quality-cam', 'quality-sd', 'quality-hd', 'quality-bluray');
+                        // Tambahkan kelas baru
+                        badge.classList.add(`quality-${quality.toLowerCase()}`);
+                    }
+                }
+            });
+        }
+        // ---------------------------------------------
 
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. Urutkan setiap list
             movieLists.forEach(list => sortList(list));
+            // 2. Terapkan warna dan animasi ke setiap label
+            applyQualityClasses();
         });
-
+        
         function filterMovies() {
             const searchTerm = searchInput.value.toLowerCase();
             const activeList = document.querySelector('.movie-list.active');
@@ -177,7 +118,7 @@
             const listItems = activeList.querySelectorAll('li');
             let resultsFound = false;
             listItems.forEach(item => {
-                const title = item.textContent.toLowerCase();
+                const title = item.querySelector('.movie-title').textContent.toLowerCase();
                 if (title.includes(searchTerm)) {
                     item.style.display = 'block';
                     resultsFound = true;
