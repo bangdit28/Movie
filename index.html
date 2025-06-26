@@ -21,20 +21,29 @@
         .category-tabs button { background-color: #1a1a1a; color: #fff; border: 2px solid #1a1a1a; padding: 10px 20px; font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
         .category-tabs button:hover { border-color: #f07b05; }
         .category-tabs button.active { background-color: #f07b05; color: #0d0d0d; border-color: #f07b05; }
-        .movie-list { list-style: none; padding: 0; text-align: left; display: none; }
+        .movie-list { list-style: none; padding: 0; text-align: left; display: none; min-height: 200px; }
         .movie-list.active { display: block; }
         .movie-list li { background-color: #1a1a1a; margin-bottom: 12px; border-radius: 8px; }
-        .movie-list a { display: flex; align-items: center; padding: 18px 20px; text-decoration: none; color: #fff; gap: 12px; transition: background-color 0.3s; }
+        .movie-list a { display: flex; align-items: center; padding: 10px 15px; text-decoration: none; color: #fff; gap: 15px; transition: background-color 0.3s; }
         .movie-list a:hover { background-color: #2a2a2a; }
-        .movie-title { font-weight: 600; }
+        .movie-poster { width: 32px; height: 48px; object-fit: cover; border-radius: 4px; flex-shrink: 0; background-color: #333; }
+        .movie-title { font-weight: 600; flex-grow: 1; text-align: left; }
         .quality-badge { padding: 4px 8px; font-size: 0.8rem; font-weight: 700; border-radius: 5px; color: #fff; text-transform: uppercase; }
+        
+        /* GAYA BADGE KUALITAS DENGAN WARNA & ANIMASI (DIKEMBALIKAN) */
         .quality-badge.quality-cam { background-color: #dc3545; animation: glow-cam 2s infinite; }
         .quality-badge.quality-sd { background-color: #0dcaf0; animation: glow-sd 2s infinite; }
-        .quality-badge.quality-hd, .quality-badge.quality-bluray { background-color: #198754; animation: glow-hd 2s infinite; }
+        .quality-badge.quality-hd, .quality-badge.quality-fhd, .quality-badge.quality-bluray { background-color: #198754; animation: glow-hd 2s infinite; }
+        
         @keyframes glow-cam { 0%, 100% { box-shadow: 0 0 5px rgba(220, 53, 69, 0.5); } 50% { box-shadow: 0 0 15px rgba(220, 53, 69, 1); } }
         @keyframes glow-sd { 0%, 100% { box-shadow: 0 0 5px rgba(13, 202, 240, 0.5); } 50% { box-shadow: 0 0 15px rgba(13, 202, 240, 1); } }
         @keyframes glow-hd { 0%, 100% { box-shadow: 0 0 5px rgba(25, 135, 84, 0.5); } 50% { box-shadow: 0 0 15px rgba(25, 135, 84, 1); } }
+        
         #no-results-message { color: #8c8c8c; font-size: 1.2rem; padding: 20px; display: none; }
+        #pagination-container { display: flex; justify-content: center; gap: 8px; margin-top: 30px; flex-wrap: wrap; }
+        .page-btn { background-color: #1a1a1a; color: #fff; border: 1px solid #333; border-radius: 5px; padding: 8px 14px; cursor: pointer; transition: background-color 0.3s, border-color 0.3s; }
+        .page-btn:hover { background-color: #333; }
+        .page-btn.active { background-color: #f07b05; color: #0d0d0d; border-color: #f07b05; font-weight: bold; }
         @media (max-width: 480px) { h1 { font-size: 2rem; } p { font-size: 1rem; } .category-tabs button { font-size: 0.9rem; padding: 8px 15px; } }
     </style>
     <script type='text/javascript' src='//pl26996990.profitableratecpm.com/2c/a4/9c/2ca49c05c3e1f86e858e51963619df7b.js'></script>
@@ -45,7 +54,7 @@
         <p>Pilih film yang ingin kamu tonton dari daftar di bawah ini.</p>
         
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Cari judul film...">
+            <input type="text" id="search-input" placeholder="Cari di semua halaman...">
         </div>
 
         <div class="category-tabs">
@@ -54,121 +63,137 @@
             <button data-category="indonesia">Indonesia</button>
         </div>
         
-        <ul class="movie-list active" data-list="movie">
-            <li data-quality="hd"><a href="john-wick-2014.html"><span class="movie-title">John Wick (2014)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="john-wick-chapter-3-parabellum-2019.html"><span class="movie-title">John Wick: Chapter 3 - Parabellum (2019)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="john-wick-chapter-2-2017.html"><span class="movie-title">John Wick: Chapter 2 (2017)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="the-amateur-2025.html"><span class="movie-title">The Amateur (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="jurassic-world-2015.html"><span class="movie-title">Jurassic World (2015)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="jurassic-world-fallen-kingdom-2018.html"><span class="movie-title">Jurassic World: Fallen Kingdom (2018)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="jurassic-world-dominion-2022.html"><span class="movie-title">Jurassic World Dominion (2022)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="jurassic-park-1993.html"><span class="movie-title">Jurassic Park (1993)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="lost-world-jurassic-park-1997.html"><span class="movie-title">The Lost World: Jurassic Park (1997)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="jurassic-park-iii-2001.html"><span class="movie-title">Jurassic Park III (2001)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="alpha-2018.html"><span class="movie-title">Alpha (2018)</span><span class="quality-badge">HD</span></a></li>
-        </ul>
-        <ul class="movie-list" data-list="anime">
-            <li data-quality="hd"><a href="predator-killer-of-killers-2025.html"><span class="movie-title">Predator: Killer of Killers (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="kpop-demon-hunters-2025.html"><span class="movie-title">KPop Demon Hunters (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="suzume.html"><span class="movie-title">Suzume (2022)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="lost-in-starlight-2025.html"><span class="movie-title">Lost in Starlight (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="night-of-the-zoopocalypse-2025.html"><span class="movie-title">Night of the Zoopocalypse (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="batman-ninja-vs-yakuza-league-2025.html"><span class="movie-title">Batman Ninja vs. Yakuza League (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="plankton-the-movie-2025.html"><span class="movie-title">Plankton: The Movie (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="barbie-and-teresa-recipe-for-friendship-2025.html"><span class="movie-title">Barbie & Teresa: Recipe for Friendship (2025)</span><span class="quality-badge">HD</span></a></li>
-            
-        </ul>
-        <ul class="movie-list" data-list="indonesia">
-            <li data-quality="hd"><a href="ipar-adalah-maut-2024.html"><span class="movie-title">Ipar Adalah Maut (2024)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="kkn-di-desa-penari-2022.html"><span class="movie-title">KKN di Desa Penari (2022)</span><span class="quality-badge">FHD</span></a></li>
-            <li data-quality="hd"><a href="badarawuhi-di-desa-penari-2024.html"><span class="movie-title">Badarawuhi di Desa Penari (2024)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="kkn-di-desa-penari-luwih-dowo-luwih-medeni-2022.html"><span class="movie-title">KKN di Desa Penari: Luwih Dowo, Luwih Medeni (2022)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="perayaan-mati-rasa-2025.html"><span class="movie-title">Perayaan Mati Rasa (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="cinta-tak-pernah-tepat-waktu-2025.html"><span class="movie-title">Cinta Tak Pernah Tepat Waktu (2025)</span><span class="quality-badge">HD</span></a></li>
-            <li data-quality="hd"><a href="paris-in-bali-2025.html"><span class="movie-title">Paris in Bali (2025)</span><span class="quality-badge">HD</span></a></li>
-        </ul>
+        <ul class="movie-list active" data-list="movie"></ul>
+        <ul class="movie-list" data-list="anime"></ul>
+        <ul class="movie-list" data-list="indonesia"></ul>
         
         <p id="no-results-message">Film tidak ditemukan.</p>
+
+        <div id="pagination-container"></div>
     </div>
 
-    <!-- SCRIPT YANG SUDAH DIPERBAIKI -->
     <script>
-        const categoryTabs = document.querySelectorAll('.category-tabs button');
-        const movieLists = document.querySelectorAll('.movie-list');
-        const searchInput = document.getElementById('search-input');
-        const noResultsMessage = document.getElementById('no-results-message');
+    const movieData = {
+        movie: [
+            // Contoh kualitas CAM (Merah)
+            { title: "The Amateur (2025)", href: "the-amateur-2025.html", poster: "https://image.tmdb.org/t/p/original/SNEoUInCa5fAgwuEBMIMBGvkkh.jpg", quality: "HD" },
+            // Contoh kualitas SD (Biru Muda)
+            { title: "Alpha (2018)", href: "alpha-2018.html", poster: "https://image.tmdb.org/t/p/original/afdZAIcAQscziqVtsEoh2PwsYTW.jpg", quality: "hd" },
+            // Contoh kualitas HD (Hijau)
+            { title: "John Wick (2014)", href: "john-wick-2014.html", poster: "https://image.tmdb.org/t/p/original/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg", quality: "HD" },
+            { title: "John Wick: Chapter 3 - Parabellum (2019)", href: "john-wick-chapter-3-parabellum-2019.html", poster: "https://image.tmdb.org/t/p/original/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg", quality: "HD" },
+            { title: "John Wick: Chapter 2 (2017)", href: "john-wick-chapter-2-2017.html", poster: "https://image.tmdb.org/t/p/original/hXWBc0ioZP3cN4zCu6SN3YHXZVO.jpg", quality: "HD" },
+            { title: "Jurassic World (2015)", href: "jurassic-world-2015.html", poster: "https://image.tmdb.org/t/p/original/rhr4y79GpxQF9IsfJItRXVaoGs4.jpg", quality: "HD" },
+            { title: "Jurassic World: Fallen Kingdom (2018)", href: "jurassic-world-fallen-kingdom-2018.html", poster: "https://image.tmdb.org/t/p/original/270MrJNqJovumHXGE6SSt0zwUIF.jpg", quality: "HD" },
+            { title: "Jurassic World Dominion (2022)", href: "jurassic-world-dominion-2022.html", poster: "https://image.tmdb.org/t/p/original/jbAvCACjLf1ZG0unB2tdmx5HAf1.jpg", quality: "HD" },
+            { title: "Jurassic Park (1993)", href: "jurassic-park-1993.html", poster: "https://image.tmdb.org/t/p/original/63viWuPfYQjRYLSZSZNq7dglJP5.jpg", quality: "HD" },
+            { title: "The Lost World: Jurassic Park (1997)", href: "lost-world-jurassic-park-1997.html", poster: "https://image.tmdb.org/t/p/original/6fSkhv35nPSw9hwPVCMINQFG1WD.jpg", quality: "HD" },
+            { title: "Jurassic Park III (2001)", href: "jurassic-park-iii-2001.html", poster: "https://image.tmdb.org/t/p/original/oQXj4NUfS3r3gHXtDOzcJgj1lLc.jpg", quality: "HD" },
+        ],
+        anime: [
+            { title: "Predator: Killer of Killers (2025)", href: "predator-killer-of-killers-2025.html", poster: "https://image.tmdb.org/t/p/original/2XDQa6EmFHSA37j1t0w88vpWqj9.jpg", quality: "HD" },
+            { title: "KPop Demon Hunters (2025)", href: "kpop-demon-hunters-2025.html", poster: "https://image.tmdb.org/t/p/original/43c1efKzA1kigNzY0HBzeoXp8LR.jpg", quality: "HD" },
+            { title: "Lost in Starlight (2025)", href: "lost-in-starlight-2025.html", poster: "https://image.tmdb.org/t/p/original/dXlUIfwejWa9YvugU9V773dUASY.jpg", quality: "HD" },
+            { title: "Night of the Zoopocalypse (2025)", href: "night-of-the-zoopocalypse-2025.html", poster: "https://image.tmdb.org/t/p/original/nCejOVZcOxKS27nnbh28NKXOdXF.jpg", quality: "HD" },
+        ],
+        indonesia: [
+            { title: "Ipar Adalah Maut (2024)", href: "ipar-adalah-maut-2024.html", poster: "https://image.tmdb.org/t/p/original/yBnfwE2aUXyZojWQNSYjBz62qzG.jpg", quality: "HD" },
+            { title: "KKN di Desa Penari (2022)", href: "kkn-di-desa-penari-2022.html", poster: "https://image.tmdb.org/t/p/original/jSqwYt0UEKypvDcKC4pcuWxYvbm.jpg", quality: "FHD" },
+            { title: "Badarawuhi di Desa Penari (2024)", href: "badarawuhi-di-desa-penari-2024.html", poster: "https://image.tmdb.org/t/p/original/aQbW5ZBEJ2c9jZ1TuYrAQclooEM.jpg", quality: "HD" },
+            { title: "Paris in Bali (2025)", href: "paris-in-bali-2025.html", poster: "https://image.tmdb.org/t/p/original/drclKp8EB7SsNXVtSYMmB9DngtM.jpg", quality: "HD" },
+        ]
+    };
 
-        function sortList(list) {
-            const items = Array.from(list.querySelectorAll('li'));
-            items.sort((a, b) => {
-                const titleA = a.querySelector('.movie-title').textContent;
-                const titleB = b.querySelector('.movie-title').textContent;
-                return titleA.localeCompare(titleB);
-            });
-            items.forEach(item => list.appendChild(item));
-        }
-        
-        // --- INI FUNGSI YANG KEMARIN KETINGGALAN ---
-        function applyQualityClasses() {
-            document.querySelectorAll('.movie-list li').forEach(item => {
-                const quality = item.dataset.quality; 
-                if (quality) {
-                    const badge = item.querySelector('.quality-badge');
-                    if (badge) {
-                        // Hapus kelas lama dulu untuk jaga-jaga
-                        badge.classList.remove('quality-cam', 'quality-sd', 'quality-hd', 'quality-bluray');
-                        // Tambahkan kelas baru
-                        badge.classList.add(`quality-${quality.toLowerCase()}`);
-                    }
-                }
-            });
-        }
-        // ---------------------------------------------
+    const ITEMS_PER_PAGE = 50; 
+    let currentCategory = 'movie';
+    let currentPage = 1;
+    const categoryTabs = document.querySelectorAll('.category-tabs button');
+    const movieLists = document.querySelectorAll('.movie-list');
+    const searchInput = document.getElementById('search-input');
+    const noResultsMessage = document.getElementById('no-results-message');
+    const paginationContainer = document.getElementById('pagination-container');
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Urutkan setiap list
-            movieLists.forEach(list => sortList(list));
-            // 2. Terapkan warna dan animasi ke setiap label
-            applyQualityClasses();
+    function renderMovies(movieArray, listElement) {
+        listElement.innerHTML = ''; 
+        noResultsMessage.style.display = movieArray.length === 0 ? 'block' : 'none';
+        movieArray.forEach(movie => {
+            const li = document.createElement('li');
+            const qualityClass = `quality-${movie.quality.toLowerCase()}`;
+            li.innerHTML = `
+                <a href="${movie.href}">
+                    <img class="movie-poster" src="${movie.poster}" alt="Poster ${movie.title}">
+                    <span class="movie-title">${movie.title}</span>
+                    <span class="quality-badge ${qualityClass}">${movie.quality}</span>
+                </a>
+            `;
+            listElement.appendChild(li);
         });
-        
-        function filterMovies() {
-            const searchTerm = searchInput.value.toLowerCase();
-            const activeList = document.querySelector('.movie-list.active');
-            if (!activeList) return;
-            const listItems = activeList.querySelectorAll('li');
-            let resultsFound = false;
-            listItems.forEach(item => {
-                const title = item.querySelector('.movie-title').textContent.toLowerCase();
-                if (title.includes(searchTerm)) {
-                    item.style.display = 'block';
-                    resultsFound = true;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-            noResultsMessage.style.display = resultsFound ? 'none' : 'block';
-        }
+    }
 
-        categoryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetCategory = tab.dataset.category;
-                categoryTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                movieLists.forEach(list => {
-                    list.querySelectorAll('li').forEach(item => item.style.display = 'block');
-                    list.classList.remove('active');
+    function setupPagination(totalItems) {
+        paginationContainer.innerHTML = '';
+        const pageCount = Math.ceil(totalItems / ITEMS_PER_PAGE);
+        if (pageCount > 1) {
+            for (let i = 1; i <= pageCount; i++) {
+                const btn = document.createElement('button');
+                btn.classList.add('page-btn');
+                btn.innerText = i;
+                if (i === currentPage) { btn.classList.add('active'); }
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    displayCurrentPage();
+                    window.scrollTo(0, 0); 
                 });
-                const targetList = document.querySelector(`.movie-list[data-list="${targetCategory}"]`);
-                if (targetList) {
-                    targetList.classList.add('active');
-                }
-                searchInput.value = '';
-                noResultsMessage.style.display = 'none';
-            });
-        });
+                paginationContainer.appendChild(btn);
+            }
+        }
+    }
 
-        searchInput.addEventListener('input', filterMovies);
+    function displayCurrentPage() {
+        const fullList = movieData[currentCategory];
+        const listElement = document.querySelector(`.movie-list[data-list="${currentCategory}"]`);
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        const paginatedItems = fullList.slice(startIndex, endIndex);
+        renderMovies(paginatedItems, listElement);
+        setupPagination(fullList.length);
+        paginationContainer.style.display = 'flex';
+    }
+
+    function handleSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const fullList = movieData[currentCategory];
+        const listElement = document.querySelector(`.movie-list[data-list="${currentCategory}"]`);
+        if (searchTerm === '') {
+            displayCurrentPage(); 
+            return;
+        }
+        const filteredResults = fullList.filter(movie => movie.title.toLowerCase().includes(searchTerm));
+        renderMovies(filteredResults, listElement);
+        paginationContainer.style.display = 'none';
+    }
+
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            currentCategory = tab.dataset.category;
+            currentPage = 1;
+            searchInput.value = '';
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            movieLists.forEach(list => list.classList.remove('active'));
+            const targetList = document.querySelector(`.movie-list[data-list="${currentCategory}"]`);
+            if(targetList) targetList.classList.add('active');
+            displayCurrentPage();
+        });
+    });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        for (const category in movieData) {
+            movieData[category].sort((a, b) => a.title.localeCompare(b.title));
+        }
+        searchInput.addEventListener('input', handleSearch);
+        displayCurrentPage();
+    });
     </script>
 </body>
 </html>
